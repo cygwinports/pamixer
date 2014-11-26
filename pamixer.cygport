@@ -1,0 +1,22 @@
+NAME="pamixer"
+VERSION=1.2.1
+RELEASE=1
+CATEGORY="Audio"
+SUMMARY="PulseAudio command-line mixer"
+DESCRIPTION="pamixer is like amixer but for pulseaudio. It can control the
+volume levels of the sinks."
+HOMEPAGE="https://github.com/cdemoulins/pamixer"
+SRC_URI="https://github.com/cdemoulins/pamixer/archive/${VERSION}/pamixer-${VERSION}.tar.gz"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	cygmake CXXFLAGS="${CXXFLAGS} -std=c++11"
+}
+
+src_install() {
+	cd ${B}
+	dobin pamixer.exe
+}
+
+DOCS="README.rst"
